@@ -1,0 +1,31 @@
+{% extends 'music/main.html' %}
+{% block title %} Add Album|Musify{% endblock %}
+    {% block body %}
+        <div class="container-fluid" style="margin-top: 3%; margin-left: 3%">
+
+        <div class="row">
+
+
+            <div class="col-md-6">
+
+                <h2 style="font-family: 'Sonsie One'; margin-left: -5%">Add Album</h2>
+            </div>
+                <div class="col-md-9" style="margin-top: 1%">
+
+
+                    <form class="form-horizontal" action="" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        {% include 'music/form.html' %}
+                         <div class="form-group">
+                                <div class="col-sm-offset-2 col-sm-10">
+                                    <button type="submit" class="btn btn-success">Add Album</button>
+                                </div>
+                          </div>
+                    </form>
+
+
+            </div>
+        </div>
+
+        </div>
+    {% endblock %}

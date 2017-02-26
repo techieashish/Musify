@@ -1,0 +1,47 @@
+{% extends 'music/main.html' %}
+{% block title %}Songs | Musify {% endblock %}
+    {% block body %}
+        <div class="container">
+
+        <div class="rows">
+            <div class="panel panel-default">
+
+                <div class="panel-body">
+
+                    <h1 style="color: darkred">Songs</h1>
+            <div class="col-md-12">
+
+                <table class="table success">
+                    <thead>
+                        <tr>
+                            <th>Album Title</th>
+                            <th>Song Title</th>
+                            <th>Play</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                       {% for song in songs %}
+                            <tr class="warning">
+                            <td>{{ song.album }}</td>
+                            <td>{{ song.track }}</td>
+                            <td>
+                                <a target="_blank" href="{{ song.track_file.url }}">
+                                    <button type="button" class="btn btn-success btn-xs">
+                                        <span class="glyphicon glyphicon-play"></span>
+                                    </button>
+                                </a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+
+            </div>
+
+                </div>
+
+            </div>
+        </div>
+
+        </div>
+    {% endblock %}

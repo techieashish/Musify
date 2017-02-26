@@ -1,0 +1,86 @@
+{% extends 'music/main.html' %}
+{% block title %} {{ album.album_title }}{% endblock %}
+
+    {% block body %}
+        <div class="container-fluid song-container">
+        
+            <div class="row">
+                <!--Left Panel-->
+                <!--Album view-->
+                <div class="col-md-3">
+                    
+                    <div class="panel panel-default">
+                        
+                        <div class="panel-body">
+
+                            <img src="{{ album.album_logo.url }}" alt="" width="280" height="280"/>
+                            <h1>{{ album.album_title }}</h1>
+                            <h2>{{ album.artist }}</h2>
+                            
+                        </div>
+                        
+                    </div>
+                    <!--End of Left Panel-->
+                </div>
+                 <!--Right View-->
+                    <div class="col-sm-8 col-md-9">
+
+                        <ul class="nav nav-pills" style="margin-bottom: 10px;">
+                            <li role="presentation" class="active"><a href="{% url 'music:albums'%}">View All</a></li>
+                            <li role="presentation">
+                                <a href="{% url 'music:add_song' album.id %}" style="font-weight: bold">
+                                    <span class="glyphicon glyphicon-plus"></span>
+                                    New Song
+                                </a>
+                            </li>
+                        </ul>
+                        <div class="panel panel-default">
+
+                            <div class="panel-body">
+                                <h1>All Songs</h1>
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>Title</th>
+                                            <th>Audio File</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for songs in album.song_set.all %}
+                                            <tr>
+                                                <td>{{ songs.track }}</td>
+                                            <td>
+                                             <a target="_blank" href="{{ songs.track_file.url }}">
+                                                <button type="button" class="btn btn-success btn-xs">
+                                                    <span class="glyphicon glyphicon-play"></span>&nbsp; Play
+                                                </button>
+                                             </a>
+                                            </td>
+
+                                            <td>
+
+                                            <a class="btn btn-danger" href="{% url 'music:sdelete' album.id songs.id %}">
+                                            <span class="glyphicon glyphicon-trash"></span>
+                                        </a>
+
+									<a class="btn btn-default" href="{% url 'music:sedit' album.id songs.id %}">
+                                            <span class="glyphicon glyphicon-pencil"></span>
+                                        </a>
+
+
+                                            </td>
+
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+
+                            </div>
+
+                        </div>
+                    </div>
+                
+            </div>
+        
+        </div>
+    {% endblock %}

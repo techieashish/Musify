@@ -1,0 +1,37 @@
+{% extends 'music/main.html' %}
+{% block title %} Albums {% endblock %}
+    {% block body %}
+        <div class="container-fluid">
+        <div class="rows">
+            {% if albums %}
+                <div class=col-md-3>
+                <div class="panel panel-primary">
+                    <div class="panel-body">
+                        {% for album in albums %}
+                        <a href='{% url 'music:album' album.id %}' class='thumbnail'>
+                        <img src='{{album.album_logo.url}}' style='height:300px;width:300px'>
+                         <p style="padding:10px;color:blue;font-size:20px;font-family:'Permanent Marker'">
+                                <strong>{{album.album_title}}</strong><br>{{album.artist}}
+                         </p>
+                            <button class="btn btn-primary" type="button">
+                                View Details
+                            </button>
+                         </a>
+
+                            <a class="btn btn-default" href="{% url 'music:aedit' album.id %}">
+                                    <span class="glyphicon glyphicon-pencil"></span>
+                        </a>
+					    <a class="btn btn-danger" href="{% url 'music:adelete' album.id %}">
+                            <span class="glyphicon glyphicon-trash"></span>
+                        </a>
+                        {% endfor %}
+                    </div>
+                </div>
+	            </div>
+                {% else %}
+                	<h3>No Albums found. <a href="{% url 'music:add_album' %}">Create a new Album now</a></h3>
+            {% endif %}
+            </div>
+        </div>
+        </div>
+    {% endblock %}

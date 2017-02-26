@@ -1,0 +1,26 @@
+body{
+    background: white url("images/background_image.jpg") ;
+    background-size: contain;
+
+}
+.navbar-form{
+    position: relative;
+    left: 45%;
+}
+.navbar{
+    border-radius: 0;
+
+}
+.navbar-brand{
+    font-family: 'Pacifico', cursive ;
+}
+h1, h2, h5, h6{
+    font-family: 'Oleo Script';
+}
+h3{
+    font-family: 'Abril Fatface';
+}
+h4{
+    font-family:'Courgette';
+}
+<!--Sonsie One Niconne -->
